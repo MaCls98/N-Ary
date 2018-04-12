@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Node {
 	
-	private String info;
+	private String pathFather;
 	private ArrayList<Node> nodeList;
 	
 	public Node(String info) {
-		this.info = info;
+		this.pathFather = info;
 		nodeList = new ArrayList<>();
 	}
 
 	public String getInfo() {
-		return info;
+		return pathFather;
 	}
 
 	public void setInfo(String info) {
-		this.info = info;
+		this.pathFather = info;
 	}
 
 	public ArrayList<Node> getNodeList() {
