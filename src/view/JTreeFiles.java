@@ -26,6 +26,8 @@ public class JTreeFiles extends JTree{
 	public void showTree(Node root){
 		if (root != null) {
 			mutableTreeNode = new DefaultMutableTreeNode(root.getInfo());
+			defaultTreeModel = new DefaultTreeModel(mutableTreeNode);
+			setModel(defaultTreeModel);
 			for (Node actual : root.getNodeList()) {
 				showTree(actual, mutableTreeNode);
 			}

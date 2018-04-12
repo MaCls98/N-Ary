@@ -6,6 +6,7 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import controller.Controller;
 import controller.Events;
@@ -25,9 +26,6 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		chooser = new FileChooser();
-		treeFiles = new JTreeFiles();
-		
-		add(treeFiles, BorderLayout.CENTER);
 		
 		btnLoadFiles = new JButton("Seleccionar Carpeta");
 		btnLoadFiles.addActionListener(controller);
@@ -38,8 +36,9 @@ public class MainWindow extends JFrame {
 	}
 	
 	public void showTree(Node root){
-		System.out.println(root);
+		treeFiles = new JTreeFiles();
 		treeFiles.showTree(root);
+		add(new JScrollPane(treeFiles), BorderLayout.CENTER);
 		repaint();
 	}
 	
