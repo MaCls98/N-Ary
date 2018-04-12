@@ -27,4 +27,9 @@ public class Node {
 	public void setNodeList(ArrayList<Node> nodeList) {
 		this.nodeList = nodeList;
 	}
+
+	@Override
+	public String toString() {
+		return "Node [pathFather=" + pathFather + ", nodeList=" + nodeList.size() + "]";
+	}
 }

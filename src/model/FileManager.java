@@ -9,7 +9,8 @@ public class FileManager {
 	
 	public FileManager(String pathFather, int totalSize){
 		father = new File(pathFather);
-		files = new TreeFiles();
+		files = new TreeFiles(father, totalSize);
+		fillTree();
 	}
 	
 	public FileManager(){

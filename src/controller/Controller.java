@@ -12,7 +12,7 @@ public class Controller implements ActionListener{
 	private MainWindow window;
 	
 	public Controller() {
-		window = new MainWindow();
+		window = new MainWindow(this);
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class Controller implements ActionListener{
 	}
 	
 	private void loadFiles(){
-		manager = new FileManager(window.getPath().getName(), window.getTotalSize());
+		manager = new FileManager(window.getPath() + "", window.getTotalSize()*1024);
 		manager.showTree();
+		window.showTree(manager.getRootTree());
 	}
-
 }

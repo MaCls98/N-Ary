@@ -9,6 +9,7 @@ public class TreeFiles {
 	
 	public TreeFiles(File father, int totalSize){
 		this.totalSize = totalSize;
+		System.out.println(father);
 		if (father.isDirectory()) {
 			root = new Node(father.getName());
 		}else {
