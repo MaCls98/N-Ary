@@ -17,13 +17,10 @@ public class JTreeFiles extends JTree{
 	public JTreeFiles() {
 		setSize(500, 500);
 		setLayout(new BorderLayout());
-		
-		mutableTreeNode = new DefaultMutableTreeNode();
-		defaultTreeModel = new DefaultTreeModel(mutableTreeNode);
-		setModel(defaultTreeModel);
 	}
 	
 	public void showTree(Node root){
+		cleanTree();
 		if (root != null) {
 			mutableTreeNode = new DefaultMutableTreeNode(root.getInfo());
 			defaultTreeModel = new DefaultTreeModel(mutableTreeNode);
@@ -42,5 +39,13 @@ public class JTreeFiles extends JTree{
 				showTree(actual, jNode);
 			}
 		}
+	}
+	
+	public void cleanTree(){
+		mutableTreeNode = null;
+		defaultTreeModel = null;
+		removeAll();
+		repaint();
+		revalidate();
 	}
 }

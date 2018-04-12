@@ -1,8 +1,11 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,6 +21,7 @@ public class MainWindow extends JFrame {
 	private FileChooser chooser;
 	private JButton btnLoadFiles;
 	private JTreeFiles treeFiles;
+	private ImageIcon icon;
 	
 	public MainWindow(Controller controller) {
 		setTitle("N-Ary Files");
@@ -26,10 +30,15 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		chooser = new FileChooser();
+		icon = new ImageIcon(getClass().getResource("/img/folder.png"));
+		setIconImage(icon.getImage());
 		
 		btnLoadFiles = new JButton("Seleccionar Carpeta");
 		btnLoadFiles.addActionListener(controller);
 		btnLoadFiles.setActionCommand(Events.CHOOSE_FOLDER.toString());
+		btnLoadFiles.setIcon(icon);
+		btnLoadFiles.setFont(new Font("Arial", Font.BOLD, 20));
+		btnLoadFiles.setBackground(Color.WHITE);
 		add(btnLoadFiles, BorderLayout.SOUTH);
 		
 		setVisible(true);
@@ -37,9 +46,9 @@ public class MainWindow extends JFrame {
 	
 	public void showTree(Node root){
 		treeFiles = new JTreeFiles();
+		treeFiles.cleanTree();
 		treeFiles.showTree(root);
 		add(new JScrollPane(treeFiles), BorderLayout.CENTER);
-		repaint();
 	}
 	
 	public File getPath(){
