@@ -14,5 +14,4 @@ public class FileChooser extends JFileChooser{
 		chooser.showOpenDialog(getRootPane());
 		return chooser.getSelectedFile();
 	}
-	
 }
